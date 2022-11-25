@@ -1,7 +1,7 @@
 import React, { useContext,useState } from 'react';
 import { useForm } from "react-hook-form";
 import toast from 'react-hot-toast';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider';
 
 
@@ -9,7 +9,9 @@ const SignUp = () => {
   const { register, formState: { errors }, handleSubmit } = useForm();
  //const [data, setData] = useState("");
   const {createUser,updateUserProfile}=useContext(AuthContext);
-  
+  const location=useLocation();
+const navigate= useNavigate();
+const from = location.state?.from?.pathname || '/';
   const [createdUserEmail,setCreatedUserEmail] = useState('');
 
   const handleSignUp = data => {
@@ -27,6 +29,7 @@ const SignUp = () => {
       .then(()=>{
         saveUser(data.name, data.email,data.role);
         toast.success('Welcome to CarCool ! Your account has created successfully !')
+        navigate(from, {replace: true})
       })
       .catch(err=>console.log(err))
     })
