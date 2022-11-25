@@ -1,5 +1,6 @@
-import React, { useContext } from 'react';
+import React, { useContext,useState } from 'react';
 import { useForm } from "react-hook-form";
+import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider';
 
@@ -8,6 +9,8 @@ const SignUp = () => {
   const { register, formState: { errors }, handleSubmit } = useForm();
  //const [data, setData] = useState("");
   const {createUser,updateUserProfile}=useContext(AuthContext);
+  
+  const [createdUserEmail,setCreatedUserEmail] = useState('');
 
   const handleSignUp = data => {
     console.log('data is', data)
@@ -16,12 +19,16 @@ const SignUp = () => {
       const user=result.user;
       console.log(user);
       const userInfo={
-        displayName: data.name
+        name : data.name,
+        email:data.email,
+        role:data.role
       }
       updateUserProfile(userInfo)
-      .then(()=>{})
+      .then(()=>{
+        saveUser(data.name, data.email,data.role);
+        toast.success('Welcome to CarCool ! Your account has created successfully !')
+      })
       .catch(err=>console.log(err))
-
     })
     .catch(err=> console.log(err))
 
@@ -30,6 +37,24 @@ const SignUp = () => {
   const signInGoogle= data=>{
 
   }
+
+  const saveUser = (name, email, role) => {
+    const user = { name, email, role };
+    fetch('http://localhost:1000/users', {
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(user)
+    })
+        .then(res => res.json())
+        .then(data => {
+            //console.log('save user',data);
+            setCreatedUserEmail(email);
+
+        })
+
+}
   return (
     <div className='h-[800px] flex justify-center items-center'>
       <div className='w-96 p-7'>
@@ -77,9 +102,9 @@ const SignUp = () => {
               
             })}
             className="select select-primary w-full max-w-xs" placeholder="Are You a ?">
-              
-              <option >Seller</option>
               <option>Buyer</option>
+              <option >Seller</option>
+              
             </select>
 
           </div>

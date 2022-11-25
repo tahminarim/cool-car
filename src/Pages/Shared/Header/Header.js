@@ -15,7 +15,7 @@ const Header = () => {
         <li ><Link to="/">Home</Link></li>
         <li><Link to="/">To Sell Car</Link></li>
         <li><Link to="/">To Buy Car</Link></li>
-        <li><Link to="/myaccount">MyAccount</Link></li>
+     
      {
         user?.uid?
         <>
@@ -26,8 +26,9 @@ const Header = () => {
         </>
         :
         <>
-        <li><Link to="/login">Login</Link></li>
-        <li><Link to="/signup">SignUp</Link></li>
+        {/* <li><Link to="/login">Login</Link></li>
+        <li><Link to="/signup">SignUp</Link></li> */}
+        <li><Link to="/myaccount">MyAccount</Link></li>
         </>
      }
     </React.Fragment>

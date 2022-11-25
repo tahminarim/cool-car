@@ -22,8 +22,8 @@ const from = location.state?.from?.pathname || '/';
 
     }
     return (
-        <div className='h-[800px] flex justify-center items-center'>
-            <div className='w-96 p-7'>
+        <div className='flex justify-center items-center'>
+            <div className='w-96 p-2'>
                 <h2 className='text-4xl text-blue-700 text-center font-bold'> Login</h2>
 
                 <button className='btn btn-outline w-full'>CONTINUE WITH GOOGLE</button>
