@@ -8,6 +8,8 @@ import AddProducts from '../../Pages/Dashboard/AddProducts/AddProducts'
 import AllProducts from '../../Pages/Dashboard/AllProducts/AllProducts'
 import AllUsers from '../../Pages/Dashboard/AllUsers/AllUsers'
 import DisplayElectricCar from '../../Pages/DisplayElectricCar/DisplayElectricCar'
+import DisplayEssenceCar from '../../Pages/DisplayEssenceCar/DisplayEssenceCar'
+import DisplayHybridCar from '../../Pages/DisplayHybridCar/DisplayHybridCar'
 import ElectricCars from '../../Pages/ElectricCars/ElectricCars'
 import EssenceCar from '../../Pages/EssenceCar/EssenceCar'
 //import Categoris from '../../Pages/Dashboard/Categoris/Categoris'
@@ -55,6 +57,14 @@ const router = createBrowserRouter([
       {
         path: '/displayelectriccar',
         element: <DisplayElectricCar></DisplayElectricCar>,
+      },
+      {
+        path: '/displayhybridcar',
+        element: <DisplayHybridCar></DisplayHybridCar>,
+      },
+      {
+        path: '/displayessencecar',
+        element: <DisplayEssenceCar></DisplayEssenceCar>,
       },
       {
         path: '/hybridcar',

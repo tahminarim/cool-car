@@ -12,7 +12,10 @@ const CarsCategories = () => {
                         The benefits of a hybrid include high fuel economy and low CO2 emissions compared with standard petrol and diesel engines – if used in the right way.
                         Some can run on electric power alone for short distances, improving economy and emissions even further.</p>
                     <div className="card-actions justify-end">
-                        <button className="btn btn-primary">See Our Hybrid Cars</button>
+                        <Link to='/displayhybridcar'>
+                            <button className="btn btn-primary">See Our Hybrid Cars</button>
+
+                        </Link>
                     </div>
                 </div>
             </div>
@@ -34,11 +37,11 @@ const CarsCategories = () => {
                         Free parking.
                         Reduced noise pollution.</p>
                     <div className="card-actions justify-end">
-                     <Link to='/displayelectriccar'>
-                     <button className="btn btn-primary">See Our Electric Cars</button>
-                  
-                     </Link>
-                       </div>
+                        <Link to='/displayelectriccar'>
+                            <button className="btn btn-primary">See Our Electric Cars</button>
+
+                        </Link>
+                    </div>
                 </div>
             </div>
 
@@ -49,7 +52,12 @@ const CarsCategories = () => {
                     <h2 className="card-title">Essence Cars!</h2>
                     <p>It is environmentally cleaner and above all, helps motorists save money every time they fill up, without this hampering vehicle performance”</p>
                     <div className="card-actions justify-end">
-                        <button className="btn btn-primary">See Our Essence Cars</button>
+                        
+                        <Link to='/displayessencecar'>
+                            <button className="btn btn-primary">See Our Essence Cars</button>
+
+                        </Link>
+                        
                     </div>
                 </div>
             </div>

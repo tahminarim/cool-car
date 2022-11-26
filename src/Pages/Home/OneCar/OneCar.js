@@ -1,10 +1,9 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../Contexts/AuthProvider';
 
 const OneCar = ({car,setAppoinment}) => {
     const { _id,email, image, description,location,oprice,purchaseyear,sellername,rprice, price, name } = car;
-    const {  loading } = useContext(AuthContext);
+    const {user,  loading } = useContext(AuthContext);
     if (loading) {
       return <>
           <div className="flex justify-center items-center">

@@ -6,7 +6,7 @@ import OneCar from '../OneCar/OneCar';
 const AllCars = () => {
     const [cars, setCars] = useState([]);
     const {  loading } = useContext(AuthContext);
-    const {appoinment,setAppoinment}= useState(null)
+    const {appoinment,setAppoinment}= useState('')
 
 
 
@@ -40,7 +40,9 @@ const AllCars = () => {
                     ></OneCar>)
                 }
             </div>
-            { appoinment && <BookModal appoinment={appoinment}></BookModal>}
+            { appoinment && 
+            <BookModal
+             appoinment={appoinment}></BookModal>}
 
         </div>
     );
