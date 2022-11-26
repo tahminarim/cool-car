@@ -19,11 +19,23 @@ const from = location.state?.from?.pathname || '/';
             const user=result.user;
             console.log(user);
             setLoginEmail(data.email)
-            navigate(from, {replace: true})
+            //getToken(data.email);
+            
           })
         .catch(err=> console.log(err))
 
     }
+
+    // const getToken = email=>{
+    //     fetch(`http://localhost:1000/jwt?email=${email}`)
+    //     .then(res=>res.json())
+    //     .then(data=>{
+    //       if(data.accessToken){
+    //         localStorage.setItem('accessToken',data.accessToken)
+    //         navigate(from, {replace: true})
+    //       }
+    //     })
+    //   }
     return (
         <div className='flex justify-center items-center'>
             <div className='w-96 p-2'>

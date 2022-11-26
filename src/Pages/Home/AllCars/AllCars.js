@@ -1,10 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../../Contexts/AuthProvider';
+import BookModal from '../BookModal/BookModal';
 import OneCar from '../OneCar/OneCar';
 
 const AllCars = () => {
     const [cars, setCars] = useState([]);
     const {  loading } = useContext(AuthContext);
+    const {appoinment,setAppoinment}= useState(null)
 
 
 
@@ -16,9 +18,9 @@ const AllCars = () => {
 
     if (loading) {
         return <>
-            <div class="flex justify-center items-center">
-                <div class="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full" role="status">
-                    <span class="visually-hidden">Loading...</span>
+            <div className="flex justify-center items-center">
+                <div className="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full" role="status">
+                    <span className="visually-hidden">Loading...</span>
                 </div>
             </div></>
     }
@@ -34,9 +36,11 @@ const AllCars = () => {
                     cars.map(car=> <OneCar
                         key={car._id}
                         car={car}
+                        setAppoinment={setAppoinment}
                     ></OneCar>)
                 }
             </div>
+            { appoinment && <BookModal appoinment={appoinment}></BookModal>}
 
         </div>
     );

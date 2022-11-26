@@ -15,7 +15,13 @@ const AllProducts = () => {
         queryKey: ['products'],
         queryFn: async () => {
             try {
-                const res = await fetch('http://localhost:1000/allproducts');
+                const res = await fetch('http://localhost:1000/allproducts', {
+                    headers: {
+                        //authorization: `bearer ${localStorage.getItem('accessToken')}`
+                        
+                    }
+                }
+                );
                 const data = await res.json();
                 console.log(data)
                 return data;
@@ -72,7 +78,7 @@ const AllProducts = () => {
                                     </div>
                                 </div></td>
                                 <td>{product.name}</td>
-                                <td>{product.price}€</td>
+                                <td>{product.price || product.rprice}€</td>
                                 <td>{product.fuel}</td>
                                 <td>{product.condition}</td>
                                 <td>{product.location}</td>

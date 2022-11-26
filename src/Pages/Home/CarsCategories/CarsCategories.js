@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const CarsCategories = () => {
     return (
@@ -33,8 +34,11 @@ const CarsCategories = () => {
                         Free parking.
                         Reduced noise pollution.</p>
                     <div className="card-actions justify-end">
-                        <button className="btn btn-primary">See Our Electric Cars</button>
-                    </div>
+                     <Link to='/displayelectriccar'>
+                     <button className="btn btn-primary">See Our Electric Cars</button>
+                  
+                     </Link>
+                       </div>
                 </div>
             </div>
 
