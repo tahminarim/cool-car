@@ -53,10 +53,21 @@ const from = location.state?.from?.pathname || '/';
         .then(res => res.json())
         .then(data => {
             //console.log('save user',data);
-            setCreatedUserEmail(email);
+            getToken(email);
 
         })
 
+}
+
+const getToken = email=>{
+  fetch(`http://localhost:1000/jwt?email=${email}`)
+  .then(res=>res.json())
+  .then(data=>{
+    if(data.accessToken){
+      localStorage.setItem('accessToken',data.accessToken)
+      navigate('/')
+    }
+  })
 }
   return (
     <div className='h-[800px] flex justify-center items-center'>

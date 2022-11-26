@@ -12,6 +12,7 @@ const location=useLocation();
 const navigate= useNavigate();
 const from = location.state?.from?.pathname || '/';
 
+
     const handleLogin = data => {
         console.log('login data is',data)
         signIn(data.email,data.password).then(result=>{

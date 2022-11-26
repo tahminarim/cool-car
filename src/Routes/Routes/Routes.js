@@ -4,8 +4,10 @@ import DashboardLayout from '../../Layout/DashboardLayout'
 
 import Main from '../../Layout/Main'
 import AddProducts from '../../Pages/Dashboard/AddProducts/AddProducts'
+import AllProducts from '../../Pages/Dashboard/AllProducts/AllProducts'
 import AllUsers from '../../Pages/Dashboard/AllUsers/AllUsers'
 import Dashboard from '../../Pages/Dashboard/Dashboard'
+import AllCars from '../../Pages/Home/AllCars/AllCars'
 import Home from '../../Pages/Home/Home/Home'
 import Login from '../../Pages/Login/Login'
 import MyAccount from '../../Pages/MyAccount/MyAccount'
@@ -32,7 +34,15 @@ const router = createBrowserRouter([
         path: '/signup',
         element: <SignUp />,
       },
-    
+      {
+        path: '/allcars',
+        element: <AllCars></AllCars>,
+      },
+      {
+        path: '/sellcar',
+        element: <AddProducts></AddProducts>,
+      },
+      
      
     ],
   },
@@ -51,6 +61,10 @@ const router = createBrowserRouter([
         path: '/dashboard/addproducts',
         element: <AddProducts></AddProducts>
     },
+    {
+      path: '/dashboard/allproducts',
+      element: <AllProducts></AllProducts>
+  },
        
         
     ]

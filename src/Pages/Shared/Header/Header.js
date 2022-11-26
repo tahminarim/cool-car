@@ -13,8 +13,8 @@ const Header = () => {
 
     const menuItems = <React.Fragment >
         <li ><Link to="/">Home</Link></li>
-        <li><Link to="/">To Sell Car</Link></li>
-        <li><Link to="/">To Buy Car</Link></li>
+        <li><Link to="/sellcar">To Sell Car</Link></li>
+        <li><Link to="/allcars">To Buy Car</Link></li>
      
      {
         user?.uid?

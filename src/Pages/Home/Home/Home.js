@@ -1,15 +1,21 @@
 import React from 'react';
+import CarsCategories from '../CarsCategories/CarsCategories';
 import HomeSection from '../HomeSection/HomeSection';
 import Slider from '../Slider/Slider';
 
 const Home = () => {
     return (
-        <div className='flex  justify-around'>
-            
-            
-            <Slider></Slider>
+        <div className='grid grid-col-1' >
+            <div className='flex  justify-around'>
+                <Slider></Slider>
 
-            <HomeSection></HomeSection>
+                <HomeSection></HomeSection>
+            </div>
+
+            <div>
+                <CarsCategories></CarsCategories>
+            </div>
+
         </div>
     );
 };

@@ -8,10 +8,10 @@ const AddProducts = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const navigate = useNavigate();
 
-    const date=new Date().toLocaleDateString();
+    const date = new Date().toLocaleDateString();
     //console.log(date)
-    const {user}= useContext(AuthContext);
-    const email=user.email;
+    const { user } = useContext(AuthContext);
+    const email = user.email;
     //console.log(user.email)
 
     const handleAproduct = data => {
@@ -23,42 +23,43 @@ const AddProducts = () => {
             method: 'POST',
             body: formData
         })
-        .then(res => res.json())
-        .then(imgData => {
-            if(imgData.success){
-                console.log(imgData.data.url);
-                const product = {
-                    name: data.name, 
-                    image: imgData.data.url,
-                    price: data.price,
-                    email:email,
-                    condition: data.condition,
-                    mobile: data.mobile,
-                    location: data.location,
-                    description: data.description,
-                    purchaseyear: data.purchaseyear,
-                    date: data.date
+            .then(res => res.json())
+            .then(imgData => {
+                if (imgData.success) {
+                    console.log(imgData.data.url);
+                    const product = {
+                        name: data.name,
+                        image: imgData.data.url,
+                        price: data.price,
+                        email: email,
+                        condition: data.condition,
+                        mobile: data.mobile,
+                        location: data.location,
+                        description: data.description,
+                        purchaseyear: data.purchaseyear,
+                        date: data.date,
+                        fuel:data.fuel
 
+                    }
+                    console.log(product)
+
+                    // save doctor information to the database
+                    fetch('http://localhost:1000/products', {
+                        method: 'POST',
+                        headers: {
+                            'content-type': 'application/json'
+                            // authorization: `bearer ${localStorage.getItem('accessToken')}`
+                        },
+                        body: JSON.stringify(product)
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            console.log('final is', data);
+                            toast.success(`${data.name} is added successfully`);
+                            navigate('/dashboard/allproducts')
+                        })
                 }
-                console.log(product)
-
-                // save doctor information to the database
-                fetch('http://localhost:1000/products', {
-                    method: 'POST',
-                    headers: {
-                        'content-type': 'application/json'
-                       // authorization: `bearer ${localStorage.getItem('accessToken')}`
-                    },
-                    body: JSON.stringify(product)
-                })
-                .then(res => res.json())
-                .then(data =>{
-                    console.log('final is',data);
-                    toast.success(`${data.name} is added successfully`);
-                    //navigate('/dashboard/allproducts')
-                })
-            }
-        })
+            })
     }
 
     // if(isLoading){
@@ -78,17 +79,17 @@ const AddProducts = () => {
                 <div className="form-control w-full max-w-xs">
                     <label className="label"> <span className="label-text">Email</span></label>
                     <input type="email" {...register("email")} defaultValue={email}
-                    className="input input-bordered w-full max-w-xs" />
+                        className="input input-bordered w-full max-w-xs" />
                 </div>
                 <div className="form-control w-full max-w-xs">
                     <label className="label"> <span className="label-text">Condition</span></label>
-                    <select 
-                    {...register('condition')}
-                    className="select input-bordered w-full max-w-xs">
+                    <select
+                        {...register('condition')}
+                        className="select input-bordered w-full max-w-xs">
                         <option>Excellent</option>
                         <option>Good</option>
                         <option>Fair</option>
-                        
+
                     </select>
                 </div>
                 <div className="form-control w-full max-w-xs">
@@ -105,6 +106,20 @@ const AddProducts = () => {
                         required: "this field is Required"
                     })} className="input input-bordered w-full max-w-xs" />
                 </div>
+
+
+                <div className="form-control w-full max-w-xs">
+                    <label className="label"> <span className="label-text">Fuel</span></label>
+                    <select
+                        {...register('fuel')}
+                        className="select input-bordered w-full max-w-xs">
+                        <option>Hybrid</option>
+                        <option>Electric</option>
+                        <option>Essence</option>
+
+                    </select>
+                </div>
+
 
                 <div className="form-control w-full max-w-xs">
                     <label className="label"> <span className="label-text">Mobile</span></label>
