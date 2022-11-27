@@ -15,7 +15,7 @@ const AllUsers = () => {
         queryFn: async () => {
             const res = await fetch('http://localhost:1000/users', {
                 headers: {
-                    authorization: `bearer ${localStorage.getItem('accessToken')}`
+                   // authorization: `bearer ${localStorage.getItem('accessToken')}`
                 }
             });
             const data = await res.json();
@@ -24,7 +24,7 @@ const AllUsers = () => {
         }
     })
     const handleVerification = id => {
-        fetch(`/users/admin/${id}`, {
+        fetch(`http://localhost:1000/users/admin/${id}`, {
             method: 'PUT',
 
         })
@@ -36,18 +36,22 @@ const AllUsers = () => {
                 }
             })
     }
-    const handleDelete = user => {
-        fetch(`http://localhost:1000/users/admin/:${user._id}`, {
-            method: 'DELETE', 
+    const handleDelete = id => {
+       console.log('delete user is',id)
+        fetch(`http://localhost:1000/users/${id}`, {
+            method: 'DELETE',
             headers: {
-               // authorization: `bearer ${localStorage.getItem('accessToken')}`
-            }
+            //    // authorization: `bearer ${localStorage.getItem('accessToken')}`
+         
+             }
         })
         .then(res => res.json())
         .then(data => {
+            console.log('delete dta is',data);
             if(data.deletedCount > 0){
+                
+                toast.success(` deleted successfully`)
                 refetch();
-                toast.success(` ${user.name} deleted successfully`)
             }
         })
     }
@@ -73,9 +77,10 @@ const AllUsers = () => {
                                 <td>{user.name}</td>
                                 <td>{user.email}</td>
                                 <td>{user.role}</td>
-                                <td>{user?.role === 'Seller' && <button onClick={() => handleVerification(user._id)} className='btn btn-xs btn-primary'>Verified User</button>}
+                                <td>{user?.verify !== 'verifieduser' && <button onClick={() => handleVerification(user._id)} className='btn btn-xs btn-primary'>
+                                    Verified User</button>}
                                 </td>
-                                <td><label onClick={() => setDeleting(user)} htmlFor="confirmation-modal" className="btn btn-sm btn-error">Delete</label></td>
+                                <td><label onClick={() => setDeleting(user._id)} htmlFor="confirmation-modal" className="btn btn-sm btn-error">Delete</label></td>
                             </tr>)
                         }
 

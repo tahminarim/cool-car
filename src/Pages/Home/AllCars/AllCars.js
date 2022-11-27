@@ -6,15 +6,15 @@ import OneCar from '../OneCar/OneCar';
 const AllCars = () => {
     const [cars, setCars] = useState([]);
     const {  loading } = useContext(AuthContext);
-    const {appoinment,setAppoinment}= useState('')
-
-
+    const [appoinment,setAppoinment]= useState(null)
 
     useEffect(() => {
         fetch('http://localhost:1000/allproducts')
             .then(res => res.json())
             .then(data => setCars(data))
     }, [])
+
+    
 
     if (loading) {
         return <>
@@ -42,7 +42,9 @@ const AllCars = () => {
             </div>
             { appoinment && 
             <BookModal
-             appoinment={appoinment}></BookModal>}
+             appoinment={appoinment}
+             
+             ></BookModal>}
 
         </div>
     );

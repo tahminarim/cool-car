@@ -6,7 +6,7 @@ import OneCar from '../Home/OneCar/OneCar';
 const DisplayElectricCar = () => {
     const [cars, setCars] = useState([]);
     const {  loading } = useContext(AuthContext);
-    const {appoinment,setAppoinment}= useState(null)
+    const [appoinment,setAppoinment]= useState(null)
 
 
 
