@@ -35,7 +35,11 @@ const AllUsers = () => {
                     refetch();
                 }
             })
+
+        
     }
+
+    
     const handleDelete = id => {
        console.log('delete user is',id)
         fetch(`http://localhost:1000/users/${id}`, {
