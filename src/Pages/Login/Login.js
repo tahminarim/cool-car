@@ -28,7 +28,7 @@ const from = location.state?.from?.pathname || '/';
     }
 
     // const getToken = email=>{
-    //     fetch(`http://localhost:1000/jwt?email=${email}`)
+    //     fetch(`https://b612-used-products-resale-server-side-tahminarim.vercel.app/jwt?email=${email}`)
     //     .then(res=>res.json())
     //     .then(data=>{
     //       if(data.accessToken){

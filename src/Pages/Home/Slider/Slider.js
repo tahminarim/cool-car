@@ -7,8 +7,8 @@ import img4 from '../../../assets/car-banner-auto-survey.jpg'
 
 const Slider = () => {
     return (
-        <div>
-            <div className="carousel w-full">
+        <div className='hidden lg:grid'>
+            <div className="carousel w-2/3">
                 <div id="slide1" className="carousel-item relative w-full">
                     <img alt="" src={img1} className="w-full" />
                     <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">

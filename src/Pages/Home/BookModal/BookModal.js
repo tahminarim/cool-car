@@ -4,7 +4,7 @@ import toast from 'react-hot-toast';
 import { AuthContext } from '../../../Contexts/AuthProvider';
 
 const BookModal = ({ appoinment }) => {
-    const { name,email,rprice,sellername} = appoinment;
+    const { name,email,rprice,sellername,image} = appoinment;
     const { user, loading } = useContext(AuthContext);
 
  // const [vuser,setVuser]= useState(null);
@@ -40,13 +40,15 @@ const BookModal = ({ appoinment }) => {
           email,
           location,
           phone,
-          price
+          price,
+          image:image,
+          role: 'Buyer'
         }
         console.log('book ing', booking)
     
     
     
-        fetch('http://localhost:1000/booking', {
+        fetch('https://b612-used-products-resale-server-side-tahminarim.vercel.app/booking', {
           method: 'POST',
           headers: {
             'content-type': 'application/json'
@@ -80,13 +82,13 @@ const BookModal = ({ appoinment }) => {
 
               <form onSubmit={handleBooking} className='grid grid-cols-1 gap-3 mt-10 '>
                 <input name="price" type="number"  value={rprice} className="input w-full input-bordered " readOnly />
-                {/* { 
-                vuser?.verify? 
+                { 
+                user?.verify? 
                 <input name="sellername" type="text" defaultValue={sellername} className="input text-blue-800 w-full input-bordered " readOnly />
                 :
                 
                 <input name="sellername" type="text" defaultValue={sellername}  placeholder="Your Name" className="input w-full input-bordered" />
-                } */}
+                }
                 <input name="email" type="email" defaultValue={email}  placeholder="Email Address" className="input w-full input-bordered" />
                 <input name="name" type="text" defaultValue={name} placeholder="Car Name" className="input w-full input-bordered" readOnly />
                 <input name="phone" type="number" placeholder="Phone Number" className="input w-full input-bordered" />

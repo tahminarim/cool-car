@@ -46,7 +46,7 @@ const EssenceCar = () => {
                     console.log(product)
 
                     // save doctor information to the database
-                    fetch('http://localhost:1000/products', {
+                    fetch('https://b612-used-products-resale-server-side-tahminarim.vercel.app/products', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json'
@@ -59,7 +59,7 @@ const EssenceCar = () => {
                             console.log('final is', data);
 
                         })
-                    fetch('http://localhost:1000/essencecar', {
+                    fetch('https://b612-used-products-resale-server-side-tahminarim.vercel.app/essencecar', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json'

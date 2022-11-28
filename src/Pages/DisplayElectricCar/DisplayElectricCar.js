@@ -11,7 +11,7 @@ const DisplayElectricCar = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:1000/electriccar')
+        fetch('https://b612-used-products-resale-server-side-tahminarim.vercel.app/electriccar')
             .then(res => res.json())
             .then(data => {
                 console.log(data)

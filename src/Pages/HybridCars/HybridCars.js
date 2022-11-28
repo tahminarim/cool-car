@@ -46,7 +46,7 @@ const HybridCars = () => {
                     console.log(product)
 
                     // save  to the database 
-                    fetch('http://localhost:1000/products', {
+                    fetch('https://b612-used-products-resale-server-side-tahminarim.vercel.app/products', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json'
@@ -61,7 +61,7 @@ const HybridCars = () => {
                         })
 
                     // save information to the database for category of car
-                    fetch('http://localhost:1000/hybridcar', {
+                    fetch('https://b612-used-products-resale-server-side-tahminarim.vercel.app/hybridcar', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json'

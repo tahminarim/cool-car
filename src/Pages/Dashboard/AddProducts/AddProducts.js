@@ -44,7 +44,7 @@ const AddProducts = () => {
                     console.log(product)
 
                     // save doctor information to the database
-                    fetch('http://localhost:1000/products', {
+                    fetch('https://b612-used-products-resale-server-side-tahminarim.vercel.app/products', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json'

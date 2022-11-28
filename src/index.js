@@ -8,6 +8,11 @@ import {
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query'
+import {Elements} from '@stripe/react-stripe-js';
+import {loadStripe} from '@stripe/stripe-js';
+
+//const stripePromise = loadStripe('pk_test_51M6N93DgN37PgQbHziInfqcgVR0OE1cKNNrthQa1GPHaIrlCXuKw1ly0S64nWt0z9VTOrfqFCoV5F8JtFIF1pQPM00VWq4ZFqV');
+
 
 const queryClient = new QueryClient()
 

@@ -8,6 +8,9 @@ import Categoris from '../../Pages/Categoris/Categoris'
 import AddProducts from '../../Pages/Dashboard/AddProducts/AddProducts'
 import AllProducts from '../../Pages/Dashboard/AllProducts/AllProducts'
 import AllUsers from '../../Pages/Dashboard/AllUsers/AllUsers'
+import MyOrders from '../../Pages/Dashboard/MyOrders/MyOrders'
+import MyProducts from '../../Pages/Dashboard/MyProducts/MyProducts'
+import Payment from '../../Pages/Dashboard/Payment/Payment'
 import DisplayElectricCar from '../../Pages/DisplayElectricCar/DisplayElectricCar'
 import DisplayEssenceCar from '../../Pages/DisplayEssenceCar/DisplayEssenceCar'
 import DisplayHybridCar from '../../Pages/DisplayHybridCar/DisplayHybridCar'
@@ -59,7 +62,7 @@ const router = createBrowserRouter([
         path: '/electriccar',
         element: <ElectricCars></ElectricCars>,
       },
-      
+
       {
         path: '/displayelectriccar',
         element: <DisplayElectricCar></DisplayElectricCar>,
@@ -80,50 +83,65 @@ const router = createBrowserRouter([
         path: '/essencecar',
         element: <EssenceCar></EssenceCar>,
       },
-      
-     
+
+
     ],
   },
 
   {
     path: '/dashboard',
-    element:<PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
-    
-        children:[
+    element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
 
-        {
-          path: '/dashboard/allusers',
-          element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
+    children: [
+
+      {
+        path: '/dashboard/allusers',
+        element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
+      },
+      {
+        path: '/dashboard/myorders',
+        element: <MyOrders></MyOrders>
+      },
+      {
+        path: '/dashboard/myproducts',
+        element: <MyProducts></MyProducts>
       },
       {
         path: '/dashboard/addproducts',
         element: <AddProducts></AddProducts>
-    },
-    {
-      path: '/dashboard/allproducts',
-      element: <AllProducts></AllProducts>
-  },
-       
-        
-    ]
-},
-{
-  path: '/myaccount',
-  element:<MyAccount></MyAccount>,
-  
-      children:[
+      },
       {
-          path: '/myaccount/login',
-          element: <Login></Login>
+        path: '/dashboard/allproducts',
+        element: <AllProducts></AllProducts>
+      },
+
+      {
+        path: '/dashboard/payment/:id',
+        element: <Payment></Payment>,
+        loader: ({ params }) => fetch(`https://b612-used-products-resale-server-side-tahminarim.vercel.app/bookings/${params.id}`)
+
+      }
+
+
+    ]
+  },
+  {
+    path: '/myaccount',
+    element: <MyAccount></MyAccount>,
+
+    children: [
+      {
+        path: '/myaccount/login',
+        element: <Login></Login>
       },
       {
         path: '/myaccount/signup',
         element: <SignUp></SignUp>
-    },
-     
-      
-  ]
-},
+      },
+
+
+    ]
+  },
 
 
 

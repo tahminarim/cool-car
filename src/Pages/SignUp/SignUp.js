@@ -66,7 +66,7 @@ const googleProvider= new GoogleAuthProvider();
 
   const saveUser = (name, email, role) => {
     const user = { name, email, role };
-    fetch('http://localhost:1000/users', {
+    fetch('https://b612-used-products-resale-server-side-tahminarim.vercel.app/users', {
         method: 'POST',
         headers: {
             'content-type': 'application/json'
@@ -83,7 +83,7 @@ const googleProvider= new GoogleAuthProvider();
 }
 
 const getToken = email=>{
-  fetch(`http://localhost:1000/jwt?email=${email}`)
+  fetch(`https://b612-used-products-resale-server-side-tahminarim.vercel.app/jwt?email=${email}`)
   .then(res=>res.json())
   .then(data=>{
     if(data.accessToken){

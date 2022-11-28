@@ -1,9 +1,9 @@
+import { useQuery } from '@tanstack/react-query';
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
-import {useQuery} from '@tanstack/react-query'
 import ConfirmationModal from '../../Shared/ConfirmationModal/ConfirmationModal';
 
-const AllProducts = () => {
+const MyProducts = () => {
     const [deleting, setDeleting] = useState(null);
 
     const closeModal = () => {
@@ -49,6 +49,37 @@ const AllProducts = () => {
         })
     }
 
+    const handleAdvertise = car => {
+        fetch('https://b612-used-products-resale-server-side-tahminarim.vercel.app/advertise', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(car)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log('save  is',data);
+    
+            })
+
+            fetch(`https://b612-used-products-resale-server-side-tahminarim.vercel.app/products/${car._id}`, {
+                method: 'PUT',
+    
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log('modified',data)
+                    if (data.modifiedCount > 0) {
+                         // Navigate('/dashboard/myproducts')
+    
+                        toast.success('Advertisement completed successful.')
+                        refetch();
+                    }
+                })
+
+        
+    }
   
 
     return (
@@ -62,10 +93,9 @@ const AllProducts = () => {
                             <th>Image</th>
                             <th>Car</th>
                             <th>Price</th>
-                            <th>Fuel</th>
-                            <th>Condition</th>
-                            <th>Location</th>
+                            <th>Advertisement</th>
                             <th>Action</th>
+                            
                         </tr>
                     </thead>
                     <tbody>
@@ -79,9 +109,9 @@ const AllProducts = () => {
                                 </div></td>
                                 <td>{product.name}</td>
                                 <td>{product.price || product.rprice}€</td>
-                                <td>{product.fuel}</td>
-                                <td>{product.condition}</td>
-                                <td>{product.location}</td>
+                                <td>{product?.advertise !== 'advertise' && <button onClick={() => handleAdvertise(product)} className='btn btn-xs btn-primary'>
+                                    Advertise</button>}
+                                </td>
                                 <td>
                                     <label onClick={() => setDeleting(product)} htmlFor="confirmation-modal" className="btn btn-sm btn-error">Delete</label>
                                 </td>
@@ -105,4 +135,4 @@ const AllProducts = () => {
     );
 };
 
-export default AllProducts;
+export default MyProducts;

@@ -11,7 +11,7 @@ const AllCars = () => {
     //const [vuser,setVuser]= useState(null);
 
     useEffect(() => {
-        fetch('http://localhost:1000/allproducts')
+        fetch('https://b612-used-products-resale-server-side-tahminarim.vercel.app/allproducts')
             .then(res => res.json())
             .then(data => setCars(data))
     }, [])
