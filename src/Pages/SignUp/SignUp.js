@@ -1,3 +1,4 @@
+import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext,useState } from 'react';
 import { useForm } from "react-hook-form";
 import toast from 'react-hot-toast';
@@ -8,7 +9,7 @@ import { AuthContext } from '../../Contexts/AuthProvider';
 const SignUp = () => {
   const { register, formState: { errors }, handleSubmit } = useForm();
  //const [data, setData] = useState("");
-  const {createUser,updateUserProfile}=useContext(AuthContext);
+  const {createUser,updateUserProfile,signInWithGoogle}=useContext(AuthContext);
   const location=useLocation();
 const navigate= useNavigate();
 const from = location.state?.from?.pathname || '/';
@@ -36,8 +37,30 @@ const from = location.state?.from?.pathname || '/';
     .catch(err=> console.log(err))
 
   }
+const googleProvider= new GoogleAuthProvider();
 
-  const signInGoogle= data=>{
+  const signInGoogle= ()=>{
+    signInWithGoogle(googleProvider)
+    .then(result => {
+      const user=result.user;
+      console.log(user);
+      const userInfo={
+        name : user.displayName,
+        email: user.email,
+        role: 'Buyer'
+      }
+      updateUserProfile(userInfo)
+      .then(()=>{
+        saveUser(user.displayName, user.email,user.role = 'Buyer');
+
+        toast.success('Welcome to CarCool ! Your account with Google has created successfully !')
+        navigate(from, {replace: true})
+      })
+      .catch(err=>console.log(err))
+  
+  
+    })
+  .catch(err => console.log(err))
 
   }
 

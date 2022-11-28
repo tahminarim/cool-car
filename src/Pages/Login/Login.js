@@ -20,6 +20,7 @@ const from = location.state?.from?.pathname || '/';
             console.log(user);
             setLoginEmail(data.email)
             //getToken(data.email);
+            navigate(from, {replace: true})
             
           })
         .catch(err=> console.log(err))
