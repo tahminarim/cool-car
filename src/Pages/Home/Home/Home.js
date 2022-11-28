@@ -1,6 +1,7 @@
 import React from 'react';
 import CarsCategories from '../CarsCategories/CarsCategories';
 import HomeSection from '../HomeSection/HomeSection';
+import OurServices from '../OurServices/OurServices';
 import Slider from '../Slider/Slider';
 
 const Home = () => {
@@ -14,6 +15,9 @@ const Home = () => {
 
             <div>
                 <CarsCategories></CarsCategories>
+            </div>
+            <div>
+                <OurServices></OurServices>
             </div>
 
         </div>

@@ -42,7 +42,6 @@ const from = location.state?.from?.pathname || '/';
             <div className='w-96 p-2'>
                 <h2 className='text-4xl text-blue-700 text-center font-bold'> Login</h2>
 
-                <button className='btn btn-outline w-full'>CONTINUE WITH GOOGLE</button>
                 <div className="divider">OR</div>
                 <form onSubmit={handleSubmit(handleLogin)}>
 
